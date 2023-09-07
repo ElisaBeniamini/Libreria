@@ -11,15 +11,20 @@ class PublicController extends Controller
     public function index()
     {
         $book = Book::all();
+
         return view('index', ['book' => $book]);
     }
+
+
+
+
     public function create() //form
     {
         return view('create');
     }
 
 
-    public function store(Request $request) //azione che va a salvare dal form -// 
+    public function store(Request $request) //azione che va a salvare dal form // 
     {
         Book::create([
             'name' => $request->name, //stiamo associando alla chiave name stiamo dando request name
@@ -32,6 +37,6 @@ class PublicController extends Controller
 
     public function show(Book $book) //form
     {
-        return view('books.show', compact('book'));
+        return view('show', compact('book'));
     }
 }

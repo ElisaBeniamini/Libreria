@@ -26,3 +26,7 @@ Route::post('/libri/store', [PublicController::class, 'store'])
 
 Route::get('/libri/{book}/dettagli', [PublicController::class, 'show'])
     ->name('books.show');
+
+
+
+    //il nome della rotta viene usato da chi cazzo viene 
