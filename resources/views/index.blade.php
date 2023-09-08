@@ -7,32 +7,26 @@
     <x-navbar />
 
     <!-- Header-->
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Libreria Larav-Datab</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Aggiungi libri alla tua collezione</p>
-            </div>
-        </div>
-    </header>
+    <x-header />
 
 
 
 
     <!-- Section-->
-    <section class="py-5">
+    <section class="py-2">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                 @foreach ($book as $item)
                     <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="card-body p-4">
+                        <div class="card ">
+                            <div class="card-body  mh-100  ">
                                 <h5 class="fw-bolder text-center">{{ $item['name'] }}</h5>
 
-                                <img src="https://picsum.photos/200
-                                " alt="">
-                                <div class="text-center pb-3 pt-4 ">
+                                <img class="img-fluid" src="https://picsum.photos/200
+                                "
+                                    alt="">
+                                <div class="text-center pb-2 pt-2 ">
                                     <span>Numero di pagine: {{ $item['pages'] }}</span>
                                     <hr class="p-0 m-0">
                                     <span>Anno di pubblicazione: {{ $item['year'] }}</span>
