@@ -8,35 +8,25 @@ use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class PublicController extends Controller
 {
-    public function index()
+    public function homepage()
     {
-        $book = Book::all();
-
-        return view('index', ['book' => $book]);
+        return view('homepage');
     }
 
-
-
-
-    public function create() //form
+    public function send(Request $request)
     {
-        return view('create');
-    }
-
-
-    public function store(Request $request) //azione che va a salvare dal form // 
-    {
-        Book::create([
-            'name' => $request->name, //stiamo associando alla chiave name stiamo dando request name
-            'pages' => $request->pages,
-            'year' => $request->year,
-
+        //  dd($request);
+        $request->validate([
+            'nome' => 'required',
+            'email' => 'required|email',
+            'messaggio' => 'required|min:10'
         ]);
-        return redirect()->route('books.index')->with('success', 'Libro Caricato');
-    }
-
-    public function show(Book $book) //form
-    {
-        return view('show', compact('book'));
+        $data = [ //mappatura dati lato server
+            'nome' => $request->name,
+            'email' => $request->email,
+            'messaggio' => $request->messaggio
+        ];
+        Mail::to($request->email)->send(new InfoMail($data));
+        dd($data);
     }
 }

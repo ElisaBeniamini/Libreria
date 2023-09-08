@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,19 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/libri', [PublicController::class, 'index'])
+Route::get('/libri', [BookController::class, 'index'])
     ->name('books.index');
 
-Route::get('/libri/create', [PublicController::class, 'create'])
+Route::get('/libri/create', [BookController::class, 'create'])
     ->name('books.create'); // create è il form
 
-Route::post('/libri/store', [PublicController::class, 'store'])
+Route::post('/libri/store', [BookController::class, 'store'])
     ->name('books.store'); // è l action del form
 
 
-Route::get('/libri/{book}/dettagli', [PublicController::class, 'show'])
+Route::get('/libri/{book}/dettagli', [BookController::class, 'show'])
     ->name('books.show');
 
+Route::get('/', [PublicController::class, 'homepage'])
+    ->name('homepage');
 
+
+Route::post('/invia-email', [PublicController::class, 'send'])->name('invia');
 
     //il nome della rotta viene usato da chi cazzo viene 
