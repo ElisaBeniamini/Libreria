@@ -31,8 +31,13 @@ class BookController extends Controller
     }
 
 
-    public function show(Book $book) //form
+    public function show($item)
     {
+        $book = Book::find($item);
+        if (!$item) {
+            abort(404);
+        }
+
         return view('show', compact('book'));
     }
 }

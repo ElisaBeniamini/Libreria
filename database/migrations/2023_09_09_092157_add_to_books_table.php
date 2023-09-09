@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('books', function (Blueprint $table) {
+            $table->string('uri')->unique()->after();  //qui creo una riga 
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::table('books', function (Blueprint $table) {
+            $table->dropColumn('uri'); //qui la tolgo
+        });
     }
 };

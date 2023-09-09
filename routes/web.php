@@ -30,8 +30,3 @@ Route::get('/libri/{book}/dettagli', [BookController::class, 'show'])
 
 Route::get('/', [PublicController::class, 'homepage'])
     ->name('homepage');
-
-
-Route::post('/invia-email', [PublicController::class, 'send'])->name('invia');
-
-    //il nome della rotta viene usato da chi cazzo viene 
