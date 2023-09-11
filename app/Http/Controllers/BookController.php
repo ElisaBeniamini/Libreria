@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookStoreRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,7 +21,7 @@ class BookController extends Controller
         return view('create');
     }
 
-    public function store(Request $request) //azione che va a salvare dal form // 
+    public function store(BookStoreRequest $request) //azione che va a salvare dal form // 
     {
         Book::create([
             'name' => $request->name, //stiamo associando alla chiave name stiamo dando request name

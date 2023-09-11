@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name'); // ,100 è il numero massimo di caratteri. è sempre consigliabile inserirlo
             $table->integer('pages');
-            $table->integer('year');
+            $table->integer('year')->nullable();
             $table->timestamps();
         });
     }
