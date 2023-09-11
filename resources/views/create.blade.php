@@ -5,22 +5,14 @@
     <!-- Navigation-->
     <x-navbar />
     <x-header />
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
         </div>
     @endif
     <div class="d-flex justify-content-center">
-        @error('nome')
-            <span style="color: red">
-                Errore - nome obbligatorio!
-            </span>
-        @enderror
-        <form method="POST" action="{{ route('books.store') }}" class="mt-5">
+
+        <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data" class="mt-5">
             @csrf
             @method('POST')
             <div class="mb-3">
@@ -53,6 +45,16 @@
                     </span>
                 @enderror
             </div>
+
+
+
+            <div class="mb-3 ">
+                <input class="form-control" id="image" type="file" name="image">
+                <label for="image" class="form-label">Copertina</label>
+            </div>
+
+
+
             <button type="submit" class="btn btn-primary">Aggiungi!</button>
         </form>
     </div>

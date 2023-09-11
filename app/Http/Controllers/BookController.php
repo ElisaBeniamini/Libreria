@@ -21,14 +21,21 @@ class BookController extends Controller
         return view('create');
     }
 
-    public function store(BookStoreRequest $request) //azione che va a salvare dal form // 
+    public function store(BookStoreRequest $request) //azione che va a salvare dal form //dd($extension_name, $file_name);
     {
+        $path_image = ''; //vuoto perche puo essere nullable
+        if ($request->hasFile('image')) {
+            $file_name = $request->file('image')->getClientOriginalName(); //recupero nome originale
+            $path_image = $request->file('image')->storeAs('public/images', $file_name);  //(percorso_di salvataggio, nome file estensione) //qui succede l operazione principale , laravel prende il file e lo salva nel nostro server
+            //quindi : SETTARE UNNA VARIABILE vuota, nel dubbio non ci sia l immagine, poi andiamo a controllare con hasFaile se effettivamente l immagine esiste; poi ci pendiamo il n9ome e dopo lo andiamo a salvare
+
+        }
         Book::create([
             'name' => $request->name, //stiamo associando alla chiave name stiamo dando request name
             'pages' => $request->pages,
             'year' => $request->year,
+            'image' => $path_image,
             'uri' => Str::slug($request->name, '-')
-
         ]);
         return redirect()->route('books.index')->with('success', 'Libro Caricato');
     }

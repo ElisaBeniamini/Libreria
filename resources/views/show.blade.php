@@ -6,12 +6,13 @@
     <x-header />
 
 
-    <div class="container-fluid d-flex justify-content-center   m-0 p-0 ">
+    <div class="container-fluid d-flex justify-content-center   mt-0 p-0 ">
 
-        <div class="row mt-5 d-flex justify-content-center  align-items-center  m-0 p-0">
+        <div class="row mt-3 d-flex justify-content-center  align-items-center  m-0 p-0">
             <div class="col-12 col-md-4">
-                <img class="img-fluid" src="https://picsum.photos/620/750
-                " alt="img-random">
+                <img class="img-fluid mb-5" src="{{ Storage::url($book->image) }}" alt="
+                "
+                    alt="{{ Storage::url($book->name) }}">
             </div>
             <div class="col-12 col-md-6 m-0 p-0 ">
                 <div class="text-center    ">

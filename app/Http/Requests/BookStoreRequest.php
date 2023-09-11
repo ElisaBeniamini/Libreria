@@ -25,6 +25,7 @@ class BookStoreRequest extends FormRequest
             'name' => 'required',
             'pages' => 'required',
             'year' => 'required',
+            'image' => 'mimes:png,jpeg,jpg,bmp|max:2048',
         ];
     }
 }
