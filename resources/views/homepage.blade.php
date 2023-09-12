@@ -8,18 +8,36 @@
     <x-header />
 
     <div class="row  ">
-        <img class="position-relative h-50 opacity-50" src="\immagini\img-1.jpg" alt="">
-        <div class="col-12 col-md-12 d-flex  justify-content-center position-absolute top-50 ">
+        <img class="position-relative h-50 opacity-50 object-fit-contain" src="\immagini\img-1.jpg" alt="">
+        <div
+            class="col-12 col-md-12 d-flex text-success  justify-content-center position-absolute top-30 mt-5  text-center ">
 
-            <a class="  btn btn-outline-success mx-5 text-black"style="font-size: 100px;  "
-                href="{{ route('books.index') }}">
-                <i class="bi bi-book text-black"></i>
-                Elenco Libri
-            </a>
-            <a class="btn btn-outline-success text-black "style="font-size: 100px;  " href="{{ route('books.create') }}">
-                <i class="bi bi-book text-black"></i>
-                Inserisci Libri
-            </a>
+            <h1 style="font-size: 150px; ">Crea la tua libreria online!</h1>
+
+            @auth
+                <button class="{{ route('books.index') }} btn btn-outline-success text-black fs-2">I tuoi libri <br>
+                    <i class=" fs-1 bi bi-arrow-right"></i>
+                </button>
+
+
+            @endauth
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
     </div>

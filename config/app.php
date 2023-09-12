@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        App\Providers\FortifyServiceProvider::class, //copiato dalla documentazione per l installazione di fortify
         /*
          * Application Service Providers...
          */

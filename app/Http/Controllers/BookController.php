@@ -41,9 +41,9 @@ class BookController extends Controller
     }
 
 
-    public function show(Book $book) // 3 injection della classe Book che va a dire a laravel che la variabile $book è di tipo Book e quindi un libro ! e quindi ci possiamo evitare sia il primo metodo che il secondo metodn
+    public function show($book) // 3- injection della classe Book che va a dire a laravel che la variabile $book è di tipo Book e quindi un libro ! e quindi ci possiamo evitare sia il primo metodo che il secondo metodn.
     {
-
+        $book = Book::where('uri', $book)->first();
         // $book = Book::findOrFail($item);  // 1
         // $book = Book::find($item);    // 2 è la stessa cosa... il metodo FINDORFAIL ci evita di scrivere piu codice
         // if (!$item) {
@@ -51,4 +51,4 @@ class BookController extends Controller
         // }
         return view('show', compact('book'));
     }
-}
+}//generalmente si inietta la classe Book nei parametri formali. il discorso è che ho messo l uri come unique e quindi avendo fatto questo non si puo fare l iniezione di dipendenza

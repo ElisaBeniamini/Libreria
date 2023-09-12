@@ -34,7 +34,7 @@
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                        href="{{ route('books.show', ['book' => $item->id]) }}">Vedi dettagli <br>
+                                        href="{{ route('books.show', ['book' => $item->uri]) }}">Vedi dettagli <br>
                                         {{ $item['nome'] }}</a>
                                 </div>
                             </div>

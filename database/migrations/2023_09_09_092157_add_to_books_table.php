@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->string('uri')->unique()->after();  //qui creo una riga 
+            $table->string('uri')->after();  //qui creo una riga  // non si fa mai di mettere l uri univoco . perche lui lo interpreta come se fosse un id
         });
     }
 
