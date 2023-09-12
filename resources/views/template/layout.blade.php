@@ -9,7 +9,7 @@
     <title>{{ $title }}</title>
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    @vite('resources\css\app.css')
+    @vite(['resources\css\app.css', 'resources\js\app.js'])
 </head>
 
 <body>

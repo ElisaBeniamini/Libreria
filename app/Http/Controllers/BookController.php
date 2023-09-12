@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create', 'store');
+    }
+
     public function index()
     {
         $book = Book::all();
@@ -23,6 +28,7 @@ class BookController extends Controller
 
     public function store(BookStoreRequest $request) //azione che va a salvare dal form //dd($extension_name, $file_name);
     {
+
         $path_image = ''; //vuoto perche puo essere nullable
         if ($request->hasFile('image')) {
             $file_name = $request->file('image')->getClientOriginalName(); //recupero nome originale
