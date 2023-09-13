@@ -6,18 +6,14 @@
 
         @guest
             <div class="d-flex mx-4" id="navbarSupportedContent ">
-
-
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 ">
-
-
                     <li class="nav-item">
-                        <a class="nav-link text-warning text-center p-0" style="font-size:12px"
+                        <a class="nav-link text-warning text-center mx-3 p-0" style="font-size:15px"
                             href="{{ route('login') }}">Entra
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-warning text-center p-0" style="font-size: 12px"
+                        <a class="nav-link text-warning text-center p-0" style="font-size: 15px"
                             href="{{ route('register') }}">Registrati </a>
                     </li>
                 </ul>

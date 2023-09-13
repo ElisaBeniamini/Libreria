@@ -2,46 +2,58 @@
     <x-slot name="title">
         Homepage
     </x-slot>
-
     <!-- Navigation-->
     <x-navbar />
 
+    <!-- img sfondo-->
+    <section class="container-fluid opacity-50"
+        style=" width: 100%; z-index: -1;height: 100%;top: 0;left: 0;background: url(/immagini/img-1.jpg) no-repeat center top;position: fixed;background-size: cover; ">
+    </section>
 
-    <div class="container-fluid m-0 p-0  position-relative">
-
-        <img class="img-fluid mw-100 opacity-50" src="\immagini\img-1.jpg" alt="sfondo-libri">
-    </div>
-    <div style=" position:absolute; top:180px;
-        row" class="d-flex text-dark opacity-80  text-center ">
-        <div class="col-12 col-md-12 d-flex flex-column align-items-center ">
-            <h1 style="font-size: 150px; ">Crea la tua libreria online!</h1>
+    <div class="row d-flex justify-content-center">
+        <!-- title header-->
+        <div class="col-12 col-md-9 text-center d-flex" style="margin-top: 180px;  margin-left: 50px;">
             <div>
-                <a class="text-decoration-none btn btn-warning fs-3 w-100  " href="{{ route('books.index') }}">Anteprima
-                    Libreria</a>
+                <h1 style="color: rgb(51, 49, 49);font-size: 110px;"> Crea la tua libreria online!</h1>
             </div>
-
-
+            @guest
+                <div>
+                    <a href="{{ route('books.index') }}" class="text-decoration-none btn btn-outline-warning  fw-bolder mx-4 "
+                        style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:30px;color: rgb(51, 49, 49)">Anteprima
+                        Libreria
+                    </a>
+                    <i class="bi bi-arrow-right" style="font-size: 50px ;color: rgb(51, 49, 49)"></i>
+                </div>
+            @endguest
             @auth
-                <div class="d-flex 
-                 flex-column">
-                    <a href="{{ route('books.index') }}" class=" btn btn-outline-warning text-black fs-4">I
-                        tuoi
-                        libri
-                        <br>
-                        <i class=" fs-4 bi bi-arrow-right"></i>
+                <div>
+                    <a href="{{ route('books.index') }}"
+                        class="text-decoration-none btn btn-outline-warning  fw-bolder my-5 "
+                        style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:30px;color: rgb(51, 49, 49)">
+                        <i class="bi bi-book bg-trasparent  mx-3 fs-1"></i>
+                        La tua libreria
+
+                    </a>
+                    <a href="{{ route('books.create') }}"
+                        class="text-decoration-none btn btn-outline-warning  fw-bolder mx-4 "
+                        style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:30px;color: rgb(51, 49, 49)">
+                        <i class="bi bi-book bg-trasparent  fs-1"></i>
+                        Aggiungi
+                        libro
+
                     </a>
 
-                    <a href="{{ route('books.create') }}" class=" btn btn-outline-warning text-black fs-5 ">Aggiungi
-                        libro <br>
-                        <i class=" fs-4 bi bi-arrow-right"></i>
-                    </a>
                 </div>
             @endauth
 
 
         </div>
+        <!--guest e auth-->
+
+
 
     </div>
+
 
 
 
