@@ -6,8 +6,6 @@
 
     <x-navbar />
 
-    <!-- Header-->
-    <x-header />
 
 
 

@@ -3,7 +3,6 @@
         Dettaglio libro
     </x-slot>
     <x-navbar />
-    <x-header />
 
 
     <div class="container-fluid d-flex justify-content-center   mt-0 p-0 ">

@@ -4,7 +4,7 @@
     </x-slot>
     <!-- Navigation-->
     <x-navbar />
-    <x-header />
+
     @if (session('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}

@@ -1,4 +1,4 @@
-<footer class="fixed-bottom bg-dark">
+<footer class="fixed-bottom bg-dark bg-gradient">
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
     </div>
