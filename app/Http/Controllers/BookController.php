@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookStoreRequest;
+use App\Http\Requests\BookUpdateRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class BookController extends Controller
+class  BookController extends Controller
 {
     public function __construct()
     {
@@ -18,12 +19,12 @@ class BookController extends Controller
     {
         $book = Book::all();
 
-        return view('index', ['book' => $book]);
+        return view('books.index', ['book' => $book]);
     }
 
     public function create() //form
     {
-        return view('create');
+        return view('books.create');
     }
 
     public function store(BookStoreRequest $request) //azione che va a salvare dal form //dd($extension_name, $file_name);
@@ -55,6 +56,41 @@ class BookController extends Controller
         // if (!$item) {
         //     abort(404);
         // }
-        return view('show', compact('book'));
+        return view('books.show', compact('book'));
+    } //generalmente si inietta la classe Book nei parametri formali. il discorso è che ho messo l uri come unique e quindi avendo fatto questo non si puo fare l iniezione di dipendenza
+
+
+
+
+    public function edit(Book $book)
+    {
+        return view('books.edit', compact('book'));
     }
-}//generalmente si inietta la classe Book nei parametri formali. il discorso è che ho messo l uri come unique e quindi avendo fatto questo non si puo fare l iniezione di dipendenza
+
+
+    public function update(BookUpdateRequest $request, Book $book)
+    {
+        $path_image = $book->image; // inserire immagine gia presente
+        if ($request->hasFile('image')) {
+            $file_name = $request->file('image')->getClientOriginalName();
+            $path_image = $request->file('image')->storeAs('public/images', $file_name); //Scrivo nel server 
+        }
+
+        $book->update([
+            'name' => $request->name,
+            'pages' => $request->pages,
+            'year' => $request->year,
+            'image' => $path_image,
+            'uri' => Str::slug($request->name, '-')
+        ]);
+
+        return redirect()->route('books.index')->with('success', 'Libro Aggiornato');
+    }
+
+
+    public function destroy(Book $book) // nome metodo 
+    {
+        $book->delete(); //metodo di comunicazione
+        return redirect()->route('books.index')->with('success', 'Libro Eliminato');
+    }
+}

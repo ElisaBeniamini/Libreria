@@ -5,18 +5,18 @@
     </x-slot>
 
     <x-navbar />
-
-
-
-
-
     <!-- Section-->
     <section>
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div style="margin-top: 150px" class="text-center">
+            <h2>Libri caricati</h2>
+            <a class="btn btn-outline-dark" href="{{ route('books.create') }}">Aggiungi nuovo libro</a>
+
+        </div>
+        <div class="container px-4 px-lg-5 " style="margin-top: 50px">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center ">
 
                 @foreach ($book as $item)
-                    <div class="col mb-5">
+                    <div class="col  ">
                         <div class="card">
                             <div class="card-body  mh-100  ">
                                 <h5 class="fw-bolder text-center">{{ $item['name'] }}</h5>
@@ -31,9 +31,13 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                <div class="text-center">
+                                    <a class="btn btn-outline-dark mt-auto"
                                         href="{{ route('books.show', ['book' => $item->uri]) }}">Vedi dettagli <br>
-                                        {{ $item['nome'] }}</a>
+                                        {{ $item['nome'] }}
+                                    </a>
+
+
                                 </div>
                             </div>
                         </div>

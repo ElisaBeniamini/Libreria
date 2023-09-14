@@ -8,10 +8,10 @@
 
 
 
-    <div class="container my-5  ">
+    <div class="container   ">
 
         <h1 class="text-center" style="font-family: monospace">Registrati subito! <br> <br> Crea la tua libreria
-            personale!
+            personale! <br> Registrati subito!
         </h1>
         <div class="row justify-content-center mt-5">
             <div class="col-12 col-md-8">

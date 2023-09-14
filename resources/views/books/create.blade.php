@@ -10,8 +10,12 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="d-flex justify-content-center">
+    <div style="margin-top:130px" class="d-flex justify-content-center">
+        <h1 style="color: rgb(74, 69, 69)">Inserisci qui il tuo libro </h1>
 
+
+    </div>
+    <div class="d-flex justify-content-center ">
         <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data" class="mt-5">
             @csrf
             @method('POST')
