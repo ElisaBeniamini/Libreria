@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->string('uri');  //qui creo una riga  // non si fa mai di mettere l uri univoco . perche lui lo interpreta come se fosse un id
+            $table->string('image');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('uri'); //qui la tolgo
+            $table->dropColumn('image');
         });
     }
 };

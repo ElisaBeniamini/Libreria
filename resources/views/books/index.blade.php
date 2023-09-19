@@ -1,46 +1,36 @@
 <x-layout>
-
     <x-slot name="title">
         Libreria
     </x-slot>
-
     <x-navbar />
     <!-- Section-->
     <section>
-        <div style="margin-top: 150px" class="text-center">
+        <div style="margin-top: 130px" class="text-center">
             <h2>Libri caricati</h2>
             <a class="btn btn-outline-dark" href="{{ route('books.create') }}">Aggiungi nuovo libro</a>
 
         </div>
-        <div class="container px-4 px-lg-5 " style="margin-top: 50px">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center ">
+        <div class="container  " style="margin-top: 30px">
+            <div class="row  justify-content-center ">
 
                 @foreach ($book as $item)
-                    <div class="col  ">
-                        <div class="card">
-                            <div class="card-body  mh-100  ">
-                                <h5 class="fw-bolder text-center">{{ $item['name'] }}</h5>
+                    <div class="card align-items-center flex-column m-3 text-right" style="width: 18rem;">
+                        <h5 class="card-title">
+                            <h5 class="fw-bolder text-center">{{ $item['name'] }}</h5>
+                        </h5>
 
-                                <img class="img-fluid mw-50" src="{{ Storage::url($item->image) }}"
-                                    alt="{{ $item->name }}">
-
-                                <div class="text-center pb-2 pt-2 ">
-                                    <span>Numero di pagine: {{ $item['pages'] }}</span>
-                                    <hr class="p-0 m-0">
-                                    <span>Anno di pubblicazione: {{ $item['year'] }}</span>
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto"
-                                        href="{{ route('books.show', ['book' => $item->uri]) }}">Vedi dettagli <br>
-                                        {{ $item['nome'] }}
-                                    </a>
-
-
-                                </div>
-                            </div>
+                        <img src="{{ Storage::url($item->image) }}" class="card-img-top mt-3 " style="width: 150px"
+                            alt="{{ $item->name }}">
+                        <div class="card-body px-1" style="font-size: 15px">
+                            <span class="card-text fw-bold ">Numero di pagine:</span> {{ $item['pages'] }} <br>
+                            <span class="card-text fw-bold pt-2">Anno di pubblicazione: </span>{{ $item['year'] }}
                         </div>
+                        <a href="{{ route('books.show', ['book' => $item->uri]) }}"
+                            class=" btn btn-outline-warning my-2"
+                            style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;color: rgb(51, 49, 49);">Vedi
+                            dettagli <br>
+                            {{ $item['nome'] }}</a>
+
                     </div>
                 @endforeach ()
 
@@ -59,7 +49,6 @@
 
 
 
-    <div style="height:1200px ">
 
     </div>
 

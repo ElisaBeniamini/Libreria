@@ -1,4 +1,7 @@
 <x-layout>
+    <x-slot name="title">
+        Inserisci Libro
+    </x-slot>
     <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
         <div class="row gx-5 justify-content-center">
 

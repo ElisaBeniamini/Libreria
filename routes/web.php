@@ -24,9 +24,10 @@ Route::get('/profile', [PublicController::class, 'profile'])
 //Route::get('/libri/{book}/dettagli', [BookController::class, 'show']) // mostra in sola lettura il nostro libro  rotta get
 //    ->name('books.show');
 
-//// edit e update sono i metodi che CONTROLLANo il modifica uno GET uno PUT
+// edit e update sono i metodi che CONTROLLANo il modifica uno GET uno PUT
+
 //Route::get('/libri/{book}/modifica', [BookController::class, 'edit'])
-//    ->name('books.edit')->middleware('auth');
+//  ->name('books.edit')->middleware('auth');
 
 
 //Route::put('/libri/update', [BookController::class, 'update'])

@@ -3,47 +3,51 @@
         Dettaglio libro
     </x-slot>
     <x-navbar />
-    <div style="margin-top: 100px; margin-bottom:30px" class="d-flex justify-content-center mb-0">
-        <h2 style="color: rgb(61, 57, 57)">Dettagli Libro</h2>
 
-    </div>
-
-    <div class="row d-flex justify-content-center  text-center align-items-center  " style="margin-bottom:100px ">
-        <div class="col-12 col-md-6 mb-0">
-            <img class="img-fluid w-50" src="{{ Storage::url($book->image) }}" alt="{{ Storage::url($book->name) }}">
+    <a class="btn btn-outline-warning  text-black " style="margin-top: 90px" href=" {{ route('books.index') }}">
+        <i class="bi bi-backspace-fill "></i>
+        Torna Indietro
+    </a>
+    <div class="row d-flex justify-content-center  text-center align-items-center" style="margin-bottom:25px; ">
+        <div class="col-12 col-md-6 px-0">
+            <img style="width: 30em;height:35em" class="img-fluid " src="{{ Storage::url($book->image) }}"
+                alt="{{ Storage::url($book->name) }}">
         </div>
-        <div class="col-12 col-md-5 d-flex  ">
-            <div class="text-center" style="margin-right:220px">
-                <p style="font-family: 'Courier New', Courier, monospace; font-size:40px "
-                    class=" text-center text-warning">
-                    {{ $book['name'] }}</p>
-                <div style=" font-size:25px">
-                    <p>Numero di pagine: {{ $book['pages'] }}</p>
+
+        <div class="col-12 col-md-5 d-flex flex-column px-0 ">
+            <div class="text-center">
+                <p style="font-size:30px " class=" text-center ">
+                    {{ $book['name'] }}
+                </p>
+                <div style=" font-size:20px;">
+                    <span>Pagine: {{ $book['pages'] }}</span>
+                    <br>
+                    <span>Anno: {{ $book['year'] }}</span>
+
+                    <p>Descrizione: <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                            recusandae ut
+                            illum est nulla
+                        </span></p>
                 </div>
-                <div style=" font-size:25px">
-                    <p>Anno di pubblicazione: {{ $book['year'] }}</p>
-                </div>
-                <a class="btn btn-outline-dark mt-auto" href=" {{ route('books.index') }}">
-                    <i class="bi bi-backspace-fill "></i>
-                    Torna Indietro
-                </a>
-                <a class="btn btn-outline-dark mt-auto" href="{{ route('books.edit', ['book' => $book->id]) }}">Modifica
+            </div>
+            <div class="mb-5">
+
+                <a class="btn btn-outline-warning  text-black mb-2"
+                    href="{{ route('books.edit', ['book' => $book->id]) }}">Modifica
                 </a>
 
                 <form action="{{ route('books.destroy', $book) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-outline-dark mt-auto" type="submit">Elimina </button>
+                    <a class="btn btn-outline-warning text-black " type="submit">Elimina </a>
                 </form>
-
             </div>
         </div>
-    </div>
 
 
 
 
 
 
-    <x-footer />
+        <x-footer />
 </x-layout>
