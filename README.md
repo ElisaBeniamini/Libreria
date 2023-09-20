@@ -1,66 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+-->  relazione autor e book  <--
+ relazione 1 a N ; dove N è molti SARA' QUINDI UNO A MOLTI.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1- dobbiamo associare la relazione 1 ad N ai libri. 
+un autore puo scrivere tanti libri quindi uno autore può avere enne libri.
+Il libro avra la specifica dell autore, quindi dobbiamo inserire una riga author_id nella tabella books
 
-## About Laravel
+ INTANTO la colonna  la aggiungiamo con il  comando  che gia conosciamo:
+              php artisan make:migration add_to_books_table
+cosi da creare solo la colonna;
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+successivamente nella migrazione di riferimento specificare tutto quello che riguarda la relazione tra i due: 
+-> migrazione di riferimento <-
+su UP :
+ public function up(): void
+    {
+        Schema::table('books', function (Blueprint $table) {
+  1       $table->unsignedBigInteger('author_id');   
+  2       $table->foreign('author_id')->references('id')->on('authors');
+         //oppure
+         //$table->foreign('author_id')->constrained();
+        });
+    }
+author_id ->usare sempre e solo questa denominazione
+1-> creiamo la nostra colonna chiamata author_id
+2-> il primo campo è una chiave esterna , e poi nel secondo campo c e la referenza esterna  che è l'id . Ma di chi? di authors
+ su DOWN invece
+Se ti dovesse servire un rollback prima cancellare la relazione e poi cancello la colonna.
+    public function down(): void
+    {  
+        Schema::table('books', function (Blueprint $table) {
+         $table->dropForeign(['author_id']);
+         $table->dropColumn('author_id');
+        });
+    }
+};
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Effettua la migrazione con : 
+php artisan migration, e vedrai nella tua tabella (tableplus) la nuova colonna appena creata.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+NB. la chiave esterna non sara mai univoca perche dobbiamo permettere all autore di scrivere piu libri.
+FATTO TUTTO CIò adesso  devo andare su BookModel e devo specificare che dentro la classe Book puo esistere un autore. 
+quindi apri bookmodel e authormodel
+su BookModel :
+		public function author()
+    {
+        return $this->belongsTo(Author::class);   
+    }
+--->accediamo alla classe Author nella sua interezza.
 
-## Learning Laravel
+su AuthorModel :
+		  public function book()
+    {
+        return $this->hasMany(Book::class);          
+    }
+--->accediamo alla classe nella sua interezza.	
+belongTo appartiene . quindi il libro appartiene all autore.
+hasMany   ha molti. quindi l autore puo avere tanti libri
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Ho appena creato il collegamento tra book e author!
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+----
 
-## Laravel Sponsors
+Adesso nel nostro book.create blade , quindi il form di inserimento libri , dobbiamo poter inserire l autore del libro quando ne inseriamo uno. per questo dobbiamo inserire un ulteriore campo dentro il form. questo campo sara un select con all interno delle option.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Bisogna però modificare il metodo create dal bookcontroller:
+innanzitutto gli dobbiamo fare arrivare authors quindi dentro create :
+$authors=Author::all();
+ e dentro il return aggiungi dentro la vista , compact('authors);
 
-### Premium Partners
+ora possiamo fare il foreach authors as author e dentro ci metto la option con value {{$author->id}} e come valore di option {{$author->frstname . ' ' $author->lastname}}
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+nel create devo ora gestire altri campi  e parlo del create che è nello store ;
+			  Book::create([
+            'name' => $request->name,
+            'pages' => $request->pages,
+            'year' => $request->year,
+            'image' => $path_image,
+AGGIUNGO 'author_id'=>request->author_id,
+            'uri' => Str::slug($request->name, '-') 
+		
+        ]);
+faccio la stessa modifica anche su update .(o prima o dopo va fatta. mi porto avanti)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Se adesso provo ad aggiungere un libro ,su table plus vedrò il mio auhtor id  che  e se ci clicchi ti porta nella tabella di riferimento che sarà appunto authors!  
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+ ADESSO IL dato AUTORE, DEVE COMPARIRE ANCHE SUL DETTAGLIO del libro, QUINDI MODIFICA LE VISTE interessate
+per collegarci alla tabella authors scrivere :
+		   <p>Autore: {{ $book->author->firstname . ' ' . $book->author->lastname }} </p>
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+            -->essendoci la relazione , possiamo accedere agli attributi di author
+            
+  NB se la pagina in questione ha bisogno di tutti gli autori presenti , sull authorcontroller , nel metodo di riferimento andare ad importare tutti gli authors cn metodo all()

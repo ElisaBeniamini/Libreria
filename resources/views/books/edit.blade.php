@@ -6,13 +6,15 @@
         <div class="row gx-5 justify-content-center">
 
             <div class="col-lg-8 col-xl-6">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                @if (session('success'))
+                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                            aria-label="Success:">
+                            <use xlink:href="#check-circle-fill" />
+                        </svg>
+                        <div>
+                            {{ session('success') }}
+                        </div>
                     </div>
                 @endif
                 <form action="{{ route('books.update', $book) }}" method="POST" enctype="multipart/form-data">
@@ -25,9 +27,16 @@
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
-
                     </div>
-                    <div class="form-floating mb-3">
+                    <select class="form-control" name="author_id">
+                        @foreach ($authors as $author)
+                            <option value="{{ $author->id }}" @if ($author->id == $book->author_id) selected @endif>
+                                {{ $author->firstname . ' ' . $author->lastname }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    <div class="form-floating mb-3 mt-3">
                         <input class="form-control" id="page" name="pages" value="{{ $book->pages }}"
                             type="text">
                         <label for="email">Pagine</label>

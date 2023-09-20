@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BookStoreRequest;
 use App\Http\Requests\BookUpdateRequest;
+use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -18,13 +19,14 @@ class  BookController extends Controller
     public function index()
     {
         $book = Book::all();
-
-        return view('books.index', ['book' => $book]);
+        $authors = Author::all();
+        return view('books.index',   compact('book', 'authors'));
     }
 
     public function create() //form
     {
-        return view('books.create');
+        $authors = Author::all();
+        return view('books.create', compact('authors'));
     }
 
     public function store(BookStoreRequest $request) //azione che va a salvare dal form //dd($extension_name, $file_name);
@@ -41,14 +43,19 @@ class  BookController extends Controller
             'pages' => $request->pages,
             'year' => $request->year,
             'image' => $path_image,
+            'author_id' => $request->author_id,
             'uri' => Str::slug($request->name, '-')
         ]);
+
+
         return redirect()->route('books.index')->with('success', 'Libro Caricato');
     }
 
 
-    public function show($book) // 3- injection della classe Book che va a dire a laravel che la variabile $book è di tipo Book e quindi un libro ! e quindi ci possiamo evitare sia il primo metodo che il secondo metodn.
+    public function show($book) // 3- injection della classe Book che va a dire a laravel che la variabile $book è di tipo Book e quindi è un libro ! e quindi ci possiamo evitare sia il primo metodo che il secondo metodn.
     {
+
+        //      $authors = Author::all();
         $book = Book::where('uri', $book)->first();
         // $book = Book::findOrFail($item);  // 1
         // $book = Book::find($item);    // 2 è la stessa cosa... il metodo FINDORFAIL ci evita di scrivere piu codice
@@ -63,7 +70,8 @@ class  BookController extends Controller
 
     public function edit(Book $book)
     {
-        return view('books.edit', compact('book'));
+        $authors = Author::all();
+        return view('books.edit', compact('book', 'authors'));
     }
 
 
@@ -80,6 +88,7 @@ class  BookController extends Controller
             'pages' => $request->pages,
             'year' => $request->year,
             'image' => $path_image,
+            'author_id' => $request->author_id,
             'uri' => Str::slug($request->name, '-')
         ]);
 

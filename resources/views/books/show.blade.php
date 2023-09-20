@@ -10,38 +10,35 @@
     </a>
     <div class="row d-flex justify-content-center  text-center align-items-center" style="margin-bottom:25px; ">
         <div class="col-12 col-md-6 px-0">
-            <img style="width: 30em;height:35em" class="img-fluid " src="{{ Storage::url($book->image) }}"
+            <img style="width: 20em;height:30em" class="img-fluid " src="{{ Storage::url($book->image) }}"
                 alt="{{ Storage::url($book->name) }}">
         </div>
 
-        <div class="col-12 col-md-5 d-flex flex-column px-0 ">
+        <div class="col-12 col-md-5 d-flex flex-column px-0 align-items-center  ">
             <div class="text-center">
                 <p style="font-size:30px " class=" text-center ">
                     {{ $book['name'] }}
                 </p>
                 <div style=" font-size:20px;">
-                    <span>Pagine: {{ $book['pages'] }}</span>
-                    <br>
-                    <span>Anno: {{ $book['year'] }}</span>
-
-                    <p>Descrizione: <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                            recusandae ut
-                            illum est nulla
-                        </span></p>
+                    <p>Pagine: {{ $book->pages }}</p>
+                    <p>Anno: {{ $book->year }}</p>
+                    <p>Autore: {{ $book->author->firstname . ' ' . $book->author->lastname }} </p>
                 </div>
             </div>
-            <div class="mb-5">
+            @auth
+                <div class="d-flex">
+                    <a class="btn btn-outline-warning  text-black mx-2"
+                        href="{{ route('books.edit', ['book' => $book->id]) }}">Modifica
+                    </a>
 
-                <a class="btn btn-outline-warning  text-black mb-2"
-                    href="{{ route('books.edit', ['book' => $book->id]) }}">Modifica
-                </a>
+                    <form action="{{ route('books.destroy', $book) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-outline-danger text-black " type="submit">Elimina </button>
+                    </form>
+                </div>
 
-                <form action="{{ route('books.destroy', $book) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <a class="btn btn-outline-warning text-black " type="submit">Elimina </a>
-                </form>
-            </div>
+            @endauth
         </div>
 
 
