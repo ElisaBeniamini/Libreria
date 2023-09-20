@@ -30,7 +30,7 @@
                         Libreria
                     </a>
                     <a href="{{ route('authors.index') }}"class="text-decoration-none btn btn-outline-warning fw-bolder "
-                        style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:30px;color: rgb(51, 49, 49);margin-top: 30px;  ">Lista
+                        style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:30px;color: rgb(51, 49, 49);margin-top: 30px;  ">Anteprima
                         Autori
                     </a>
                 </div>
@@ -47,6 +47,12 @@
                         style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:25px;color: rgb(51, 49, 49)">
                         <i class="bi bi-book bg-trasparent  fs-3"></i>
                         Autori
+                    </a>
+                    <a href="{{ route('categories.index') }}"
+                        class="text-decoration-none btn btn-outline-warning  fw-bolder my-3 "
+                        style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:25px;color: rgb(51, 49, 49)">
+                        <i class="bi bi-book bg-trasparent  fs-3"></i>
+                        Categorie
                     </a>
 
 
