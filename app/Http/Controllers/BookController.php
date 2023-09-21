@@ -6,6 +6,7 @@ use App\Http\Requests\BookStoreRequest;
 use App\Http\Requests\BookUpdateRequest;
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -25,8 +26,9 @@ class  BookController extends Controller
 
     public function create() //form
     {
+        $categories = Category::all();
         $authors = Author::all();
-        return view('books.create', compact('authors'));
+        return view('books.create', compact('authors', 'categories'));
     }
 
     public function store(BookStoreRequest $request) //azione che va a salvare dal form //dd($extension_name, $file_name);
@@ -38,7 +40,7 @@ class  BookController extends Controller
             //quindi : SETTARE UNNA VARIABILE vuota, nel dubbio non ci sia l immagine, poi andiamo a controllare con hasFaile se effettivamente l immagine esiste; poi ci pendiamo il n9ome e dopo lo andiamo a salvare
 
         }
-        Book::create([
+        $book = Book::create([
             'name' => $request->name, //stiamo associando alla chiave name stiamo dando request name
             'pages' => $request->pages,
             'year' => $request->year,
@@ -47,7 +49,9 @@ class  BookController extends Controller
             'uri' => Str::slug($request->name, '-')
         ]);
 
-
+        //Asscoia categorie
+        $book->categories()->detach();
+        $book->categories()->attach($request->categories);
         return redirect()->route('books.index')->with('success', 'Libro Caricato');
     }
 
@@ -71,7 +75,8 @@ class  BookController extends Controller
     public function edit(Book $book)
     {
         $authors = Author::all();
-        return view('books.edit', compact('book', 'authors'));
+        $categories = Category::all();
+        return view('books.edit', compact('book', 'authors', 'categories'));
     }
 
 

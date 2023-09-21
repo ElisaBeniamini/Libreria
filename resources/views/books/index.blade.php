@@ -6,7 +6,7 @@
     <!-- Section-->
     <section>
 
-        <div style="margin-top: 100px" class="text-center">
+        <div style="margin-top: 90px" class="text-center">
             <h2>Libri caricati</h2>
             @auth
                 <a class="btn btn-outline-success" href="{{ route('books.create') }}">Aggiungi nuovo libro</a>

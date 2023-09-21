@@ -1,26 +1,21 @@
 <x-layout>
     <x-slot name="title">
-        Inserisci Libro
+        Modifica Libro
     </x-slot>
-    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
-        <div class="row gx-5 justify-content-center">
+    <x-navbar />
 
-            <div class="col-lg-8 col-xl-6">
-                @if (session('success'))
-                    <div class="alert alert-success d-flex align-items-center" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-                            aria-label="Success:">
-                            <use xlink:href="#check-circle-fill" />
-                        </svg>
-                        <div>
-                            {{ session('success') }}
-                        </div>
-                    </div>
-                @endif
+
+
+
+    <div class="container-fluid  " style="margin-top: 80px">
+        <h1 class="mt-5 text-center text-success">Modifica libro</h1>
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-12 col-md-4">
                 <form action="{{ route('books.update', $book) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-1">
                         <input class="form-control @error('name') is-invalid @enderror" id="name"
                             value="{{ $book->name }}" name="name" type="text">
                         <label for="name">Name</label>
@@ -36,7 +31,7 @@
                         @endforeach
                     </select>
 
-                    <div class="form-floating mb-3 mt-3">
+                    <div class="form-floating mb-1 mt-1">
                         <input class="form-control" id="page" name="pages" value="{{ $book->pages }}"
                             type="text">
                         <label for="email">Pagine</label>
@@ -44,8 +39,8 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-floating mb-3">
-                        <img class="card-img-top w-50" style="max-height:20rem" src="{{ Storage::url($book->image) }}"
+                    <div class="form-floating">
+                        <img class="img-fluid" style="max-height:15rem" src="{{ Storage::url($book->image) }}"
                             alt="..." />
                     </div>
                     <div class="form-floating mb-3">
@@ -70,5 +65,7 @@
                 </form>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </x-layout>

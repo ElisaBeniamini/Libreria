@@ -17,4 +17,9 @@ class Book extends Model
     {
         return $this->belongsTo(Author::class);   // --->accediamo alla classe nella sua interezza.
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

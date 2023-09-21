@@ -12,9 +12,6 @@
         </a>
     </div>
     <!--button go-back END-->
-
-
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -25,8 +22,7 @@
         </div>
     @endif
 
-
-    <div style="margin-top:10px" class="d-flex justify-content-center">
+    <div style="margin-top:-15px" class="d-flex justify-content-center">
         <h1 style="color: rgb(74, 69, 69)">Inserisci qui il tuo libro </h1>
     </div>
     <div class="d-flex justify-content-center ">
@@ -34,7 +30,6 @@
             @csrf
             @method('POST')
             <div class="mb-3">
-
                 <input class="form-control" id="name" value="{{ old('name') }}" type="text" name="name">
                 <label for="name" class="form-label">Nome del libro</label>
                 @error('name')
@@ -69,7 +64,18 @@
                     </span>
                 @enderror
             </div>
-            <div class="mb-3 ">
+
+
+            @foreach ($categories as $category)
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="{{ $category->id }}" name="categories[]">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ $category->name }}
+                    </label>
+                </div>
+            @endforeach
+            <div>Associa le categorie</div>
+            <div class=" mt-3 ">
                 <input class="form-control" id="image" type="file" name="image">
                 <label for="image" class="form-label">Copertina</label>
             </div>
