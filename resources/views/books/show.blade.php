@@ -10,7 +10,8 @@
     </a>
     <div class="row d-flex justify-content-center  text-center align-items-center" style="margin-bottom:25px; ">
         <div class="col-12 col-md-6 px-0">
-            <img style="width: 20em;height:30em" class="img-fluid " src="{{ Storage::url($book->image) }}"
+            <img style="width: 20em;height:30em" class="img-fluid "
+                src="{{ empty($item->image) ? '/immagini/default.jpg' : Storage::url($item->image) }}"
                 alt="{{ Storage::url($book->name) }}">
         </div>
 

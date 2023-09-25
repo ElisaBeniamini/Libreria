@@ -32,8 +32,8 @@
                         <h5 class="card-title">
                             <h5 class="fw-bolder text-center">{{ $item['name'] }}</h5>
                         </h5>
-                        <img src="{{ Storage::url($item->image) }}" class="card-img-top mt-3 " style="width: 150px"
-                            alt="{{ $item->name }}">
+                        <img src="{{ empty($item->image) ? '/immagini/default.jpg' : Storage::url($item->image) }}"
+                            class="card-img-top mt-3 " style="width: 150px" alt="{{ $item->name }}">
                         <div class="card-body px-1" style="font-size: 15px">
                             <span class="card-text fw-bold ">Numero di pagine:</span> {{ $item['pages'] }} <br>
                             <span class="card-text fw-bold pt-2">Anno di pubblicazione: </span>{{ $item['year'] }} <br>
