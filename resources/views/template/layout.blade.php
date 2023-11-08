@@ -18,14 +18,7 @@
             Caricamento completato
         </div>
     @endif
-
-
-
-
     {{ $slot }}
-
-
-
 </body>
 
 </html>
