@@ -36,4 +36,10 @@ nav {
     .desktop-only-ciao-user {
         display: none;
     }
+
+
+
+    .a-row-auth-homepage {
+        font-size: 30px;
+    }
 }

@@ -36,6 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @forelse ($authors as $author)
                             <tr>
                                 <th scope="row">{{ $author->id }}</th>
@@ -64,7 +65,9 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr colspan="4"> </tr>
+                            <tr>
+                                <td class="fs-1 text-danger text-center" colspan="4">{{ $message }}</td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>

@@ -21,7 +21,8 @@ class  BookController extends Controller
     {
         $book = Book::all();
         $authors = Author::all();
-        return view('books.index',   compact('book', 'authors'));
+        $message = $book->isEmpty() ? 'Libreria Vuota. Aggiungi subito il tuo primo libro' : null;
+        return view('books.index',   compact('book', 'authors', 'message'));
     }
 
     public function create() //form

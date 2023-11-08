@@ -15,8 +15,8 @@ class AuthorController extends Controller
     {
 
         $authors = Author::all();
-
-        return view('authors.index', compact('authors'));
+        $message = $authors->isEmpty() ? 'Nessun autore presente' : null;
+        return view('authors.index', compact('authors', 'message'));
     }
 
     /**

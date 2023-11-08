@@ -14,7 +14,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        $message = $categories->isEmpty() ? 'Nessuna categoria presente' : null;
+        return view('categories.index', compact('categories', 'message'));
     }
 
     /**

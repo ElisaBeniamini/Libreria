@@ -30,15 +30,16 @@
 
 
         @auth
-            <div class="row d-flex justify-content-center align-items-center ">
-                <div class="col-4 col-md-4  d-flex flex-column align-items-center">
+            <div class="row d-flex justify-content-center align-items-center row-auth-homepage ">
+                <div class="col-6 col-md-4  d-flex flex-column align-items-center">
                     <img class="img-fluid " width="330px" src="\immagini\libreria.jpg" alt="immagine libreria ">
-                    <a href="{{ route('books.index') }}" class=" text-decoration-none fw-bolder fs-1 text-muted ">
+                    <a href="{{ route('books.index') }}"
+                        class="a-row-auth-homepage text-decoration-none fw-bolder fs-1 text-muted ">
                         <i class="bi bi-book bg-trasparent "></i>
                         Libreria
                     </a>
                 </div>
-                <div class="col-4 col-md-4 d-flex flex-column align-items-center  ">
+                <div class="col-6 col-md-4 d-flex flex-column align-items-center  ">
                     <img class="img-fluid " width="330px" src="\immagini\GIU AMA 008-05.jpg"
                         alt="immagine piuma e inchiostro">
                     <a href="{{ route('authors.index') }}" class=" text-decoration-none fw-bolder fs-1 text-muted ">
@@ -47,7 +48,7 @@
                         Autori
                     </a>
                 </div>
-                <div class="col-4 col-md-4 d-flex flex-column align-items-center ">
+                <div class="col-6 col-md-4 d-flex flex-column align-items-center ">
                     <img class="img-fluid  " width="330px" src="\immagini\img2.jpg" alt="imamgine penna ed inchiostro">
                     <a href="{{ route('categories.index') }}"class=" text-decoration-none fw-bolder fs-1 text-muted ">
                         <i class="bi bi-book bg-trasparent"></i>
