@@ -30,29 +30,30 @@
 
 
         @auth
-            <div class="row d-flex justify-content-center align-items-center row-auth-homepage ">
-                <div class="col-6 col-md-4  d-flex flex-column align-items-center">
-                    <img class="img-fluid " width="330px" src="\immagini\libreria.jpg" alt="immagine libreria ">
+            <div class="row  d-flex text-center align-items-center ">
+                <div class="col-12 col-md-4  d-flex flex-column align-items-center  ">
                     <a href="{{ route('books.index') }}"
                         class="a-row-auth-homepage text-decoration-none fw-bolder fs-1 text-muted ">
-                        <i class="bi bi-book bg-trasparent "></i>
-                        Libreria
+                        <i class="bi bi-book bg-trasparent "></i> Libreria
+                        <img class="img-fluid img-homepage" width="330px" src="\immagini\libreria.jpg"
+                            alt="immagine libreria ">
                     </a>
                 </div>
-                <div class="col-6 col-md-4 d-flex flex-column align-items-center  ">
-                    <img class="img-fluid " width="330px" src="\immagini\GIU AMA 008-05.jpg"
-                        alt="immagine piuma e inchiostro">
+                <div class="col-12 col-md-4 d-flex text-center flex-column align-items-center margin-column-homepage-media">
                     <a href="{{ route('authors.index') }}" class=" text-decoration-none fw-bolder fs-1 text-muted ">
-                        <i class="bi bi-book bg-trasparent "></i>
-
-                        Autori
+                        <i class="bi bi-book bg-trasparent "></i> Autori
+                        <img class="img-fluid img-homepage" width="330px" src="\immagini\GIU AMA 008-05.jpg"
+                            alt="immagine piuma e inchiostro">
                     </a>
                 </div>
-                <div class="col-6 col-md-4 d-flex flex-column align-items-center ">
-                    <img class="img-fluid  " width="330px" src="\immagini\img2.jpg" alt="imamgine penna ed inchiostro">
+                <div
+                    class="col-12 col-md-4 d-flex text-center flex-column align-items-center  margin-column-homepage-media">
                     <a href="{{ route('categories.index') }}"class=" text-decoration-none fw-bolder fs-1 text-muted ">
                         <i class="bi bi-book bg-trasparent"></i>
                         Categorie
+                        <img class="img-fluid  img-homepage" width="330px" src="\immagini\img2.jpg"
+                            alt="imamgine penna ed inchiostro">
+
                     </a>
                 </div>
             </div>

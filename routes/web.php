@@ -14,6 +14,7 @@ Route::get('/', [PublicController::class, 'homepage'])
 Route::get('/profile', [PublicController::class, 'profile'])
     ->name('profile')->middleware('auth');
 
+
 //Route::get('/libri/create', [BookController::class, 'create'])->name('books.create'); //rotta GET  che ci fa vedere il form     // create è il form
 
 //Route::post('/libri/store', [BookController::class, 'store']) //rotta POST che ci fa salva quello che abbiamo scitto sul form

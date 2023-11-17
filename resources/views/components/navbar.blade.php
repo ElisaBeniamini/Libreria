@@ -1,17 +1,16 @@
 <nav class="navbar navbar-expand-lg bg-dark bg-gradient ">
-    <div class="container ">
+    <div class="container container-navbar-media-query">
         <!-- Logo - ciao usee-->
-        <div class="d-flex  align-items-end">
+        <div class="d-flex align-items-end">
             <div>
-                <a class="navbar-brand logo-title" href="{{ route('homepage') }}">
+                <a class="navbar-brand logo-title text-center" href="{{ route('homepage') }}">
                     <i class="bi bi-book mx-2 icona-logo"></i>
                     BOOKSREAD
                 </a>
-
             </div>
             <!-- Start Auth - Ciao User -->
             @auth
-                <div class="desktop-only-ciao-user">
+                <div class="desktop-only-ciao-user ">
                     <div style="display: inline-block; margin-bottom:7px "onmouseover="showEmail(true)"
                         onmouseout="showEmail(false)">
                         <span class="text-light fs-5" id="greetingText">Ciao {{ Auth::user()->name }}!</span>,
@@ -21,13 +20,14 @@
             @endauth
         </div>
         @auth
-            <div class="d-flex  align-items-center">
-                <a class="text-decoration-none text-info " href="{{ route('profile') }}">
+            <div class="d-flex mx-3 fs-5">
+                <a class="text-decoration-none" href="{{ route('profile') }}">
                     Profilo
                 </a>
                 <form action="{{ route('logout') }}" method="POST" class="mx-2" style=" cursor: pointer;">
                     @csrf
-                    <a class="nav-link text-danger" onclick="event.preventDefault(); this.closest('form').submit();">
+                    <a class="text-decoration-none text-danger"
+                        onclick="event.preventDefault(); this.closest('form').submit();">
                         Esci
                     </a>
                 </form>

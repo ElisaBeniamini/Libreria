@@ -15,10 +15,11 @@
                 </div>
             </div>
         @endif
-        <div style="padding-top: 80px" class="text-center">
+        <div style="padding-top: 0px" class="text-center">
             <h2>Autori caricati</h2>
             @auth
-                <a class="btn btn-outline-success" href="{{ route('authors.create') }}">Aggiungi nuovo Autore</a>
+                <a class="button-30 button-30-aggiungi-media" href="{{ route('authors.create') }}"> <i
+                        class="bi bi-plus fs-3"></i> Aggiungi </a>
 
             @endauth
         </div>
@@ -32,7 +33,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
-                            <th scope="col">Anno di nascita</th>
+                            <th scope="col">Nascita</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,7 +67,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="fs-1 text-danger text-center" colspan="4">{{ $message }}</td>
+                                <td class="fs-1 text-warning text-center" colspan="4">{{ $message }}</td>
                             </tr>
                         @endforelse
                     </tbody>

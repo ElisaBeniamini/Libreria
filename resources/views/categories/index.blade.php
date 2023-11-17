@@ -15,10 +15,11 @@
                 </div>
             </div>
         @endif
-        <div style="padding-top: 80px" class="text-center text-success mt-3">
+        <div class="text-center  mt-3">
             <h2>Categorie caricate</h2>
             @auth
-                <a class="btn btn-outline-success" href="{{ route('categories.create') }}">Aggiungi nuova categoria</a>
+                <a class="button-30 button-30-aggiungi-media" href="{{ route('categories.create') }}"> <i
+                        class="bi bi-plus fs-3"></i> Aggiungi </a>
 
             @endauth
         </div>
@@ -64,7 +65,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="fs-1 text-danger text-center" colspan="4">{{ $message }}</td>
+                                <td class="fs-4 text-warning text-center" colspan="4">{{ $message }}</td>
                             </tr>
                         @endforelse
                     </tbody>

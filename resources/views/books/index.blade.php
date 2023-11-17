@@ -11,7 +11,8 @@
             <h2>Libri caricati</h2>
 
             @auth
-                <a class="btn btn-outline-success" href="{{ route('books.create') }}">Aggiungi nuovo libro</a>
+                <a class="button-30 button-30-aggiungi-media" href="{{ route('books.create') }}"> <i
+                        class="bi bi-plus fs-3"></i> Aggiungi </a>
 
             @endauth
 
@@ -28,11 +29,12 @@
                     </div>
                 </div>
             @endif
-            <div class="row  ">
+            <div class="row d-flex justify-content-center mt-5">
                 @if (isset($message))
-                    <div>
-                        <h2 class="text-danger d-flex justify-content-center mt-3 text-center">{{ $message }}</h2>
-
+                    <div
+                        class=" col-12 col-md-10 d-flex flex-column justify-content-center align-items-center  text-center">
+                        <h2 class="text-warning ">{{ $message }}</h2>
+                        <img class="img-fluid img-default-media " src="\immagini\default-book.png" alt="">
                     </div>
                 @else
                     @foreach ($book as $item)
