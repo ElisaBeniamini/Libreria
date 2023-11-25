@@ -4,31 +4,33 @@
     </x-slot>
     <!-- Navigation-->
     <x-navbar />
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-
-    <div style="margin-top:130px" class="d-flex justify-content-center">
-        <h1 style="color: rgb(74, 69, 69)">Inserisci Categoria </h1>
+    <!--button go-back  + title inserisci libro-->
+    <div class="div-title-create mt-3">
+        <a class="text-decoration-none  text-dark " href="{{ URL::previous() }}">
+            <i class=" mx-2 bi bi-backspace-fill text-dark fs-4"></i>
+        </a>
+        <h3>Aggiungi Categoria </h3>
     </div>
 
-    <div class="container  d-flex align-items-center justify-content-center" style="background-color: #f7f7f7">
-        <div class="row">
-            <div class="col-12 col-md-6  ">
-                <img class="img-fluid " style="width: 500px" src="\immagini\penna.jpg" alt="">
+    <div class="container ">
+        <div class="row d-flex align-items-end">
+            <div class="col-12 col-md-6 d-flex justify-content-end ">
+                <img class="img-fluid "src="\immagini\create_author-removebg-preview.png" alt="">
             </div>
 
-            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column">
+            <div class="col-12 col-md-5 ">
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <form method="POST" action="{{ route('categories.store') }}" style="margin-left: 0px"
-                    class=" d-flex  flex-column ">
+                <form method="POST" action="{{ route('categories.store') }}" class="form-style-css">
                     @csrf
                     @method('POST')
                     <div class="mb-3">
@@ -42,7 +44,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-outline-warning text-black ">Aggiungi Categoria!</button>
+                    <button type="submit" class=" button-30 mt-3 button-30-media">Aggiungi!</button>
                 </form>
             </div>
 

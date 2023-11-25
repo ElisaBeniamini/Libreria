@@ -4,81 +4,67 @@
     </x-slot>
     <x-navbar />
     <!-- Section-->
-    <section>
-
-
-        <div style="margin-top: 50px" class="text-center">
+    <section class="mt-5">
+        <div class="text-center">
             <h2>Libri caricati</h2>
-
             @auth
                 <a class="button-30 button-30-aggiungi-media" href="{{ route('books.create') }}"> <i
                         class="bi bi-plus fs-3"></i> Aggiungi </a>
-
             @endauth
-
-        </div>
-        <div class="container " style="margin-top:10px">
-            @if (session('success'))
-                <div class="alert alert-success d-flex align-items-center" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-                        aria-label="Success:">
-                        <use xlink:href="#check-circle-fill" />
-                    </svg>
-                    <div>
-                        {{ session('success') }}
-                    </div>
-                </div>
-            @endif
-            <div class="row d-flex justify-content-center mt-5">
-                @if (isset($message))
-                    <div
-                        class=" col-12 col-md-10 d-flex flex-column justify-content-center align-items-center  text-center">
-                        <h2 class="text-warning ">{{ $message }}</h2>
-                        <img class="img-fluid img-default-media " src="\immagini\default-book.png" alt="">
-                    </div>
-                @else
-                    @foreach ($book as $item)
-                        <div class="card align-items-center flex-column mx-3 mb-5  text-right" style="width: 18rem;">
-                            <h5 class="card-title">
-                                <h5 class="fw-bolder text-center">{{ $item['name'] }}</h5>
-                            </h5>
-                            <img src="{{ empty($item->image) ? '/immagini/default.jpg' : Storage::url($item->image) }}"
-                                class="card-img-top mt-3 " style="width: 150px" alt="{{ $item->name }}">
-                            <div class="card-body px-1" style="font-size: 15px">
-                                <span class="card-text fw-bold ">Numero di pagine:</span> {{ $item['pages'] }} <br>
-                                <span class="card-text fw-bold pt-2">Anno di pubblicazione: </span>{{ $item['year'] }}
-                                <br>
-                                <span class="card-text fw-bold">Autore:</span>
-                                {{ $item->author->firstname . ' ' . $item->author->lastname }}
-                            </div>
-
-                            <a href="{{ route('books.show', ['book' => $item->uri]) }}" class=" btn btn-info my-2"
-                                style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;color: rgb(51, 49, 49);">Vedi
-                                dettagli <br>
-                                {{ $item['nome'] }}</a>
-
-                        </div>
-                    @endforeach
-                @endif
-
-
-
-
-
-
-
-
-            </div>
         </div>
     </section>
+    <main class="index-book-media d-flex mb-5 mt-5">
+        @if (isset($message))
+            <div class=" col-12 col-md-10 d-flex flex-column justify-content-center align-items-center  text-center">
+                <h2 class="text-warning ">{{ $message }}</h2>
+                <img class="img-fluid img-default-media " src="\immagini\default-book.png" alt="">
+            </div>
+        @else
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    @foreach ($book as $item)
+                        <div class="col-12 col-md-3 text-start  book-card" id="bookCard">
+                            <div class="book-card__cover">
+                                <div class="book-card__book">
+                                    <div class="book-card__book-front">
+                                        <img class="book-card__img border border-secondary"
+                                            src="{{ empty($item->image) ? '/immagini/default.jpg' : Storage::url($item->image) }}"
+                                            alt="Book Cover">
+                                    </div>
+                                    <div class="book-card__book-back"></div>
+                                    <div class="book-card__book-side"></div>
+                                </div>
+                            </div>
+                            <div class="book-card__info text-center">
+                                <div class="book-card__title">
+                                    <h5 class="text-capitalize">{{ $item['name'] }}</h5>
+                                </div>
+                                <div class="book-card__author">
+                                    {{ $item->author->firstname . ' ' . $item->author->lastname }}
+                                </div>
+
+                                <a href="{{ route('books.show', ['book' => $item->uri]) }}"
+                                    class=" mt-2 button-show-scopri-di-piu">
+                                    <span class="text">Scopri di più</span>
+
+                                </a>
+
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
+    </main>
 
 
 
 
-
-
-    </div>
 
 
     <x-footer />
+
+
 </x-layout>

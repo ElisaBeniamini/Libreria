@@ -72,18 +72,11 @@
                                 </span>
                             @enderror
                         </div>
-
-
                     </div>
                     <div class="d-flex flex-column mt-3">
-
-
                         <label for="email" class="form-label  ">Categoria </label>
                         <select name="category_id" class="form-control">
                             <option value="" disabled selected>Scegli Categoria</option>
-
-
-
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"> {{ $category->name }}
                                 </option>
@@ -99,14 +92,12 @@
                 </form>
             </div>
             <!--img inserimento libro -->
-            <div class="col-12 col-md-6 ">
+            <div class="col-12 col-md-6 img-create-xs-displaynone ">
                 <img width="100%" height="100%" class="img-fluid" src="\immagini\4087-removebg-preview.png"
                     alt="">
             </div>
         </div>
     </div>
-
-
 
     <x-footer />
 </x-layout>

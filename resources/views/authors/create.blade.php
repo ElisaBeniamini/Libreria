@@ -4,30 +4,29 @@
     </x-slot>
     <!-- Navigation-->
     <x-navbar />
-
-
-    <div style="margin-top:130px" class="d-flex justify-content-center">
-        <h1 style="color: rgb(74, 69, 69)">Inserisci gli Autori </h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <!--button go-back  + title inserisci Autore-->
+    <div class="div-title-create mt-3">
+        <a class="text-decoration-none  text-dark " href="{{ URL::previous() }}">
+            <i class=" mx-2 bi bi-backspace-fill text-dark fs-4"></i>
+        </a>
+        <h3>Aggiungi Autore</h3>
     </div>
 
-    <div class="container  d-flex align-items-center justify-content-center" style="background-color: #f7f7f7">
-        <div class="row">
-            <div class="col-12 col-md-6  ">
-                <img class="img-fluid " style="width: 500px" src="\immagini\penna.jpg" alt="">
-            </div>
-
-            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column">
-
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <form method="POST" action="{{ route('authors.store') }}" style="margin-left: 0px">
+    <div class=" container d-flex justify-content-center mt-5">
+        <!--row form inserimento autore + img -->
+        <div class="row  mt-3 d-flex justify-content-end ">
+            <!--inserimento autore -->
+            <div class="col-12 col-md-7  ">
+                <form method="POST" action="{{ route('authors.store') }}" class="form-style-css ">
                     @csrf
                     @method('POST')
                     <div class="mb-3">
@@ -40,7 +39,6 @@
                             </span>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <input class="form-control" id="lastname" value="{{ old('lastname') }}" type="text"
                             name="lastname">
@@ -54,23 +52,23 @@
                     <div class="mb-3 ">
                         <input class="form-control" id="birthday" value="{{ old('birthday') }}" type="date"
                             name="birthday">
-                        <label for="birthday" class="form-label">Anno di Nascita</label>
+                        <label for="birthday" class="form-label ">Anno di Nascita</label>
                         @error('birthday')
                             <span style="color: red">
                                 Errore - Anno obbligatorio!
                             </span>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-outline-warning text-black ">Aggiungi Autore!</button>
+                    <button type="submit" class=" button-30 mt-2 button-30-media">Aggiungi!</button>
                 </form>
             </div>
-
-
+            <div class="col-12  col-md-5 img-create-xs-displaynone ">
+                <img width="100%" height="100%" class="img-fluid" src="\immagini\create_author-removebg-preview.png"
+                    alt="">
+            </div>
         </div>
-
     </div>
 
-    </div>
 
 
 
