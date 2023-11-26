@@ -51,9 +51,9 @@
                             @endforeach
                         </select>
                     </div>
-                    <div>
+                    <div class=" mt-3">
                         <label for="descrizione">Descrizione</label>
-                        <textarea id="descrizione" name="descrizione" rows="4" cols="50">{{ old('descrizione') }}</textarea>
+                        <textarea class="form-control" id="descrizione" name="descrizione" rows="4" cols="50">{{ old('descrizione') }}</textarea>
                         @error('descrizione')
                             <span style="color: red">
                                 Errore - Descrizione obbligatoria!
