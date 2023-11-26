@@ -47,7 +47,8 @@ class  BookController extends Controller
             'year' => $request->year,
             'image' => $path_image,
             'author_id' => $request->author_id,
-            'uri' => Str::slug($request->name, '-')
+            'uri' => Str::slug($request->name, '-'),
+            'descrizione' => $request->descrizione,
         ]);
 
         //Asscoia categorie
@@ -55,7 +56,6 @@ class  BookController extends Controller
         $book->categories()->attach($request->categories);
         return redirect()->route('books.index')->with('success', 'Libro Caricato');
     }
-
 
     public function show($book) // 3- injection della classe Book che va a dire a laravel che la variabile $book è di tipo Book e quindi è un libro ! e quindi ci possiamo evitare sia il primo metodo che il secondo metodn.
     {

@@ -51,6 +51,15 @@
                             @endforeach
                         </select>
                     </div>
+                    <div>
+                        <label for="descrizione">Descrizione</label>
+                        <textarea id="descrizione" name="descrizione" rows="4" cols="50">{{ old('descrizione') }}</textarea>
+                        @error('descrizione')
+                            <span style="color: red">
+                                Errore - Descrizione obbligatoria!
+                            </span>
+                        @enderror
+                    </div>
                     <div class="d-flex mt-3 px-1">
                         <div>
                             <label for="email" class="form-label ">Numero pagine</label>
@@ -88,6 +97,7 @@
                         <input class="form-control  bg-dark bg-gradient text-light" id="image" type="file"
                             name="image">
                     </div>
+
                     <button type="submit" class=" button-30 mt-3 button-30-media">Aggiungi!</button>
                 </form>
             </div>
