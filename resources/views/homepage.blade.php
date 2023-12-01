@@ -4,12 +4,66 @@
     </x-slot>
     <!-- Navigation-->
     <x-navbar />
+    <!-- Testo di Invito -->
+    <div class="container rounded">
+        <div class="row mt-5 mb-5 d-flex justify-content-center">
+            <div class=" col-12 col-md-12 text-center">
+                <h1>Riempi la tua libreria personale!</h1>
+                <h3 class="mb-5 mt-4 ">AGGIUNGI I LIBRI CHE HAI LETTO {{-- E CONDIVIDI LE TUE ESPERIENZE LETTERARIE CON ALTRI 
+                    APPASSIONATI! --}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row rounded d-flex justify-content-center">
+            <div class="col-12 col-md-6 p-0">
+                <img class="rounded" width="100%" height="250px" src="\immagini\libreria-guest.jpg"
+                    style="object-fit: cover" alt="">
+            </div>
+            <div class=" col-12 col-md-6 text-center text-dark  align-self-center">
+                <h3 style="font-size: 45px">Visita alcune librerie!</h3>
+                <a style="font-size: 30px" class="text-decoration-none text-secondary"
+                    href="{{ route('books.index') }}">Scopri di più
+                    <i class="bi bi-arrow-right-circle-fill ">
+                    </i>
+                </a>
+            </div>
+        </div>
 
+        <div class="row rounded d-flex justify-content-center">
+            <div class=" col-12 col-md-6 text-center text-dark align-self-center">
+                <h3 style="font-size: 45px">Autori </h3>
+                <a style="font-size: 30px" class="text-decoration-none text-secondary"
+                    href="{{ route('authors.index') }}">Scopri di più
+                    <i class="bi bi-arrow-right-circle-fill ">
+                    </i>
+                </a>
+            </div>
+            <div class="col-12 col-md-6  p-0">
+                <img width="100%" height="250px" class="rounded" style="object-fit: cover"
+                    src="\immagini\authors-homepage.jpg" alt="">
+            </div>
+        </div>
 
+        <div class="row rounded d-flex justify-content-center ">
+            <div class="col-12 col-md-6  p-0">
+                <img width="100%" height="250px" class="rounded" style="object-fit: cover"
+                    src="\immagini\category_homepage.jpg" alt="">
+            </div>
+            <div class=" col-12 col-md-6 text-center text-dark align-self-center">
+                <h3 style="font-size: 45px">Categorie </h3>
+                <a style="font-size: 30px" class="text-decoration-none text-secondary"
+                    href="{{ route('authors.index') }}">Scopri di più
+                    <i class="bi bi-arrow-right-circle-fill ">
+                    </i>
+                </a>
+            </div>
 
-    <div class="container mb-5">
+        </div>
 
-        @guest
+    </div>
+    {{-- @guest
             <div class="row justify-content-center ">
                 <div class="col-12 col-md-12 text-center d-flex justify-content-center align-items-center"
                     style="margin-top: 180px;  margin-left: 50px;">
@@ -26,40 +80,62 @@
                     </div>
                 </div>
             </div>
-        @endguest
-
-
+        @endguest --}}
+    <div class="container mt-5">
         @auth
-            <div class="row  d-flex text-center align-items-center ">
+            <!-- Colonna Aggiungi Libro -->
+            <div class=" row  d-flex justify-content-evenly text-center align-items-center "
+                style="box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;">
                 <div class="col-12 col-md-4  d-flex flex-column align-items-center  ">
+                    <a class="button-30 button-30-aggiungi-media text-center" href="{{ route('books.create') }}">
+                        <i class="bi bi-plus fs-3"></i>
+                        Aggiungi <br>
+                        Libro
+                    </a>
                     <a href="{{ route('books.index') }}"
                         class="a-row-auth-homepage text-decoration-none fw-bolder fs-1 text-muted ">
-                        <i class="bi bi-book bg-trasparent "></i> Libreria
-                        <img class="img-fluid img-homepage" width="330px" src="\immagini\libreria.jpg"
-                            alt="immagine libreria ">
+                        <i class="bi bi-book bg-trasparent "></i>
+                        Libreria <br>
+                        <i class="bi bi-arrow-right-circle-fill iconahomepage"></i>
                     </a>
                 </div>
+                <!-- Colonna Aggiungi Autore -->
                 <div class="col-12 col-md-4 d-flex text-center flex-column align-items-center margin-column-homepage-media">
+                    <a class="button-30 button-30-aggiungi-media text-center" href="{{ route('authors.create') }}">
+                        <i class="bi bi-plus fs-3"></i>
+                        Aggiungi <br>
+                        Autore
+                    </a>
                     <a href="{{ route('authors.index') }}" class=" text-decoration-none fw-bolder fs-1 text-muted ">
-                        <i class="bi bi-book bg-trasparent "></i> Autori
-                        <img class="img-fluid img-homepage" width="330px" src="\immagini\GIU AMA 008-05.jpg"
-                            alt="immagine piuma e inchiostro">
+                        <i class="bi bi-book bg-trasparent "></i>
+                        Autori <br>
+                        <i class="bi bi-arrow-right-circle-fill iconahomepage"></i>
                     </a>
                 </div>
+                <!-- Colonna Aggiungi Categoria -->
                 <div
                     class="col-12 col-md-4 d-flex text-center flex-column align-items-center  margin-column-homepage-media">
+                    <a class="button-30 button-30-aggiungi-media text-center" href="{{ route('categories.create') }}">
+                        <i class="bi bi-plus fs-3"></i>
+                        Aggiungi <br>
+                        Categoria
+                    </a>
                     <a href="{{ route('categories.index') }}"class=" text-decoration-none fw-bolder fs-1 text-muted ">
                         <i class="bi bi-book bg-trasparent"></i>
-                        Categorie
-                        <img class="img-fluid  img-homepage" width="330px" src="\immagini\img2.jpg"
-                            alt="imamgine penna ed inchiostro">
-
+                        Categorie <br>
+                        <i class="bi bi-arrow-right-circle-fill iconahomepage"></i>
                     </a>
                 </div>
             </div>
         @endauth
-
     </div>
+
+
+
+
+
+
+
 
 
 

@@ -16,7 +16,7 @@
         </div>
     @endif
     <!--button go-back  + title inserisci libro-->
-    <div class="div-title-create mt-3">
+    <div class="div-title-create mt-5">
         <a class="text-decoration-none  text-dark " href="{{ URL::previous() }}">
             <i class=" mx-2 bi bi-backspace-fill text-dark fs-4"></i>
         </a>
