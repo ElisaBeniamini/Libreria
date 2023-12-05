@@ -8,6 +8,7 @@
                     BOOKSREAD
                 </a>
             </div>
+
             <!-- Start Auth - Ciao User -->
             @auth
                 <div class="desktop-only-ciao-user ">
@@ -46,6 +47,7 @@
             </div>
         @endguest
     </div>
+
 </nav>
 
 

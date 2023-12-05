@@ -1,6 +1,7 @@
 body {
     font-family: 'Pacifico', cursive;
     ;
+    background-color: #e2c68f6a;
 }
 
 nav {
@@ -15,7 +16,6 @@ nav {
 
 .logo-title:hover {
     color: #E2C78F;
-    -webkit-text-stroke: 0.2px #fff;
 }
 
 .link-nav-css {
@@ -32,8 +32,6 @@ nav {
     justify-content: space-evenly;
 
 }
-
-
 
 .riepilogo-profilo {
     font-size: 30px;
@@ -263,10 +261,6 @@ main {
 
 .button-show-scopri-di-piu:hover {
     border-bottom: 2px solid blue;
-}
-
-.iconahomepage {
-    color: #E2C78F;
 }
 
 
