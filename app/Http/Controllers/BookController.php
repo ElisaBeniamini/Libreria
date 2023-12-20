@@ -7,7 +7,9 @@ use App\Http\Requests\BookUpdateRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class  BookController extends Controller
@@ -22,6 +24,8 @@ class  BookController extends Controller
         $book = Book::all();
         $authors = Author::all();
         $message = $book->isEmpty() ? 'Libreria Vuota. Aggiungi il tuo primo libro' : null;
+        $user = Auth::user();
+
         return view('books.index',   compact('book', 'authors', 'message'));
     }
 

@@ -4,22 +4,25 @@
     </x-slot>
     <x-navbar />
     <!-- Section-->
-    <section class="mt-5">
-        <div class="text-center">
-            <h2>Libri caricati</h2>
+
+
+
+    <main class=" d-flex  flex-column index-book-media d-flex mb-5 ">
+        <div class="text-center mb-3">
             @auth
                 <a class="button-30 button-30-aggiungi-media" href="{{ route('books.create') }}"> <i
-                        class="bi bi-plus fs-3"></i> Aggiungi </a>
+                        class="bi bi-plus fs-3"></i>
+                    Add book </a>
             @endauth
         </div>
-    </section>
-    <main class="index-book-media d-flex mb-5 mt-5">
+        <!-- se non ci sono libri inseriti-->
         @if (isset($message))
             <div class=" col-12 col-md-10 d-flex flex-column justify-content-center align-items-center  text-center">
                 <h2 class="text-warning ">{{ $message }}</h2>
                 <img class="img-fluid img-default-media " src="\immagini\default-book.png" alt="">
             </div>
         @else
+            <!--altrimenti cicla i libri inseriti dall utente e stampali -->
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     @foreach ($book as $item)

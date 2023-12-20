@@ -2,10 +2,12 @@ body {
     font-family: 'Pacifico', cursive;
     ;
     background-color: #e2c68f6a;
+
 }
 
 nav {
     height: 70px;
+    margin-bottom: 30px;
 }
 
 .logo-title,
@@ -162,28 +164,28 @@ aside {
     }
 }
 
-main {
+/* main {
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 
 .book-card {
     border-radius: 5px;
-    background-color: #fff;
+    background-color: transparent;
     padding: 0;
     margin-bottom: 30px;
-    /* box-shadow: */
-    /* 0 3px 6px rgba(0, 0, 0, 0.16), */
-    /* 0 3px 6px rgba(0, 0, 0, 0.23); */
+    /* box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.16),
+        0 3px 6px rgba(0, 0, 0, 0.23); */
 
     .book-card__cover {
         position: relative;
         width: 200px;
         height: 300px;
-        margin: 0 auto 8px auto;
+        margin: 20px auto 8px auto;
         perspective: 1000px;
     }
 
@@ -250,9 +252,7 @@ main {
     }
 }
 
-.inverti-icona {
-    transform: scaleX(-1);
-}
+
 
 .button-show-scopri-di-piu {
     text-decoration: none;
@@ -262,6 +262,316 @@ main {
 .button-show-scopri-di-piu:hover {
     border-bottom: 2px solid blue;
 }
+
+
+
+
+#book {
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -ms-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    transition-duration: .5s;
+    -webkit-perspective: 2000px;
+    -moz-perspective: 2000px;
+    -ms-perspective: 2000px;
+    -o-perspective: 2000px;
+    perspective: 2000px;
+}
+
+.main {
+    width: 300px;
+    height: 430px;
+    color: #92684F;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -ms-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    transition-duration: .5s;
+}
+
+/* = Book Font
+-------------------------------------------------------------- */
+.book-font {
+    width: 300px;
+    height: 430px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    font-size: 15px;
+    text-align: center;
+    text-shadow: 0 2px 0 rgba(30, 35, 45, 1);
+    box-shadow: inset 3px 0 10px rgba(0, 0, 0, 0.1);
+    /* 给书本添加光照阴影 */
+    z-index: 10;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    -webkit-transform-origin: 0% 50%;
+    -moz-transform-origin: 0% 50%;
+    -ms-transform-origin: 0% 50%;
+    -o-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -ms-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    transition-duration: .5s;
+
+    -webkit-transform: translate3d(0, 0, 25px);
+
+    -moz-transform: translate3d(0, 0, 25px);
+    -ms-transform: translate3d(0, 0, 25px);
+    -o-transform: translate3d(0, 0, 25px);
+    transform: translate3d(0, 0, 25px);
+}
+
+.book-cover {
+    width: 300px;
+    height: 430px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.book-cover-back {
+    width: 300px;
+    height: 430px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: #c5d1e1;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transform: rotate3d(0, 1, 0, -180deg);
+    -moz-transform: rotate3d(0, 1, 0, -180deg);
+    -ms-transform: rotate3d(0, 1, 0, -180deg);
+    -o-transform: rotate3d(0, 1, 0, -180deg);
+    transform: rotate3d(0, 1, 0, -180deg);
+}
+
+.title {
+    margin: 70px 0 25px 0;
+    height: 38px;
+    font-size: 38px;
+}
+
+.author {
+    height: 20px;
+    font-size: 20px;
+}
+
+.publisher {
+    width: 100%;
+    position: absolute;
+    bottom: 22px;
+}
+
+
+
+/* = Book Back
+-------------------------------------------------------------- */
+.book-back {
+    width: 300px;
+    background: #3c444f;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    color: white;
+    -webkit-transform: rotate3d(0, 1, 0, -180deg) translate3d(0, 0, 25px);
+    -moz-transform: rotate3d(0, 1, 0, -180deg) translate3d(0, 0, 25px);
+    -ms-transform: rotate3d(0, 1, 0, -180deg) translate3d(0, 0, 25px);
+    -o-transform: rotate3d(0, 1, 0, -180deg) translate3d(0, 0, 25px);
+    transform: rotate3d(0, 1, 0, -180deg) translate3d(0, 0, 25px);
+    z-index: 8;
+}
+
+.custom-image {
+    height: 430px;
+    width: 300px;
+}
+
+.book-page,
+.book-top,
+.book-right,
+.book-bottom {
+    background: #EEEFE9;
+}
+
+.book-right {
+    width: 50px;
+    height: 420px;
+    position: absolute;
+    top: 5px;
+    right: -20px;
+    box-shadow: 0 1px 0 #EEEFE9, 0 -1px 0 #EEEFE9;
+    -webkit-transform: rotate3d(0, 1, 0, 90deg);
+    -moz-transform: rotate3d(0, 1, 0, 90deg);
+    -ms-transform: rotate3d(0, 1, 0, 90deg);
+    -o-transform: rotate3d(0, 1, 0, 90deg);
+    transform: rotate3d(0, 1, 0, 90deg);
+}
+
+/* Cover */
+.view-cover:hover .main {
+    -webkit-transform: rotate3d(0, 1, 0, -40deg);
+    -moz-transform: rotate3d(0, 1, 0, -40deg);
+    -ms-transform: rotate3d(0, 1, 0, -40deg);
+    -o-transform: rotate3d(0, 1, 0, -40deg);
+    transform: rotate3d(0, 1, 0, -40deg);
+}
+
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #D16666;
+    color: whitesmoke;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.4s;
+
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+
+    background-color: white;
+    color: #D16666;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    margin-top: 20px;
+    width: 400px;
+    max-height: 300px;
+    padding: 0 18px;
+    background-color: #FCFCFD;
+    display: none;
+    overflow: auto;
+    background-color: transparent;
+    scrollbar-width: thin;
+    /* 'thin' o 'auto' per browser basati su Firefox */
+    scrollbar-color: #333 #FCFCFD;
+    /* colore della barra/maniglia */
+    border-bottom: 1px solid#D16666;
+}
+
+/* Chrome, Safari */
+::-webkit-scrollbar {
+    width: 5px;
+    height: auto;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #D16666;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 30px;
+    background-color: #FCFCFD;
+}
+
+/* .accordion-wrapper {
+    display: block;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.accordion+.title {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background: #1565C0;
+}
+
+.accordion~.title strong {
+    line-height: 24px;
+    color: white;
+}
+
+.accordion~.title .side-icon {
+    display: block;
+}
+
+.accordion:checked~.title .side-icon {
+    display: none;
+}
+
+.accordion~.title .down-icon {
+    display: none;
+}
+
+.accordion:checked~.title .down-icon {
+    display: block;
+}
+
+.accordion~.content {
+    display: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.accordion:checked~.content {
+    display: block;
+}
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -318,6 +628,7 @@ main {
     .button-30-aggiungi-media {
         width: 110px;
         height: 35px;
+        margin-top: 20px;
     }
 
 
@@ -342,10 +653,24 @@ main {
         display: none;
     }
 
+    .panel {
+        width: 300px;
+    }
+
+    .detail-book-media {
+        margin-top: 30px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
     .book-card {
         width: 22%;
+    }
+}
+
+@media only screen and (max-width: 1167px) {
+    .row-authHomepage-media {
+        margin-bottom: 200px;
+        margin-top: 0;
     }
 }

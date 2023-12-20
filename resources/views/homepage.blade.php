@@ -7,28 +7,25 @@
 
     <!-- Testo di Invito header-->
     @auth
-
-
-
-
-        <div class="container " style="margin-top: 200px">
-            <div class="row d-flex justify-content-between text-center align-items-center ">
+        <div class="container">
+            <div class="row d-flex  text-center align-self-center row-authHomepage-media">
                 <!-- Colonna Aggiungi Libro -->
-                <div class="col-12 col-md-4  d-flex flex-column align-items-center  ">
+                <div class="col-12 col-md-4 p-3 d-flex flex-column align-items-center  ">
                     <!--button add book-->
                     <a class="button-30 button-30-aggiungi-media text-center" href="{{ route('books.create') }}">
-                        <i class="bi bi-plus fs-3 text-success"></i>
+                        <i class="bi bi-plus fs-2 text-success"></i>
                         Aggiungi<br> Libro
                     </a>
                     <!-- Go library -->
                     <a href="{{ route('books.index') }}"
-                        class="a-row-auth-homepage text-decoration-none fw-bolder  text-muted " style="font-size: 80px">
+                        class="a-row-auth-homepage text-decoration-none fw-bolder  text-muted " style="font-size: 50px">
                         Libreria
                         <i class="bi bi-arrow-right-circle-fill  text-success text-gradient "></i>
                     </a>
                 </div>
                 <!-- Colonna Aggiungi Autore -->
-                <div class="col-12 col-md-4 d-flex text-center flex-column align-items-center margin-column-homepage-media">
+                <div
+                    class="col-12 col-md-4 p-3 d-flex text-center flex-column align-items-center margin-column-homepage-media">
                     <!--button add author-->
                     <a class="button-30 button-30-aggiungi-media text-center" href="{{ route('authors.create') }}">
                         <i class="bi bi-plus fs-3 text-primary"></i>
@@ -36,13 +33,14 @@
                     </a>
                     <!-- Go Author -->
                     <a href="{{ route('authors.index') }}" class=" text-decoration-none fw-bolder text-muted "
-                        style="font-size: 80px">
-                        Autori <br>
+                        style="font-size:50px">
+                        Autori
                         <i class="bi bi-arrow-right-circle-fill  text-primary text-gradient"></i>
                     </a>
                 </div>
                 <!-- Colonna Aggiungi Categoria -->
-                <div class="col-12 col-md-4 d-flex text-center flex-column align-items-center margin-column-homepage-media">
+                <div
+                    class="col-12 col-md-4 p-3 d-flex text-center flex-column align-items-center margin-column-homepage-media">
                     <!--button add category-->
                     <a class="button-30 button-30-aggiungi-media text-center" href="{{ route('categories.create') }}">
                         <i class="bi bi-plus fs-3 text-dark"></i>
@@ -51,9 +49,9 @@
                     </a>
                     <!-- go category -->
                     <a href="{{ route('categories.index') }}"class=" text-decoration-none fw-bolder text-muted "
-                        style="font-size: 80px">
-                        Categorie <br>
-                        <i class="bi bi-arrow-right-circle-fill text-dark text-gradient"></i>
+                        style="font-size: 50px">
+                        Categorie
+                        <i class="bi bi-arrow-right-circle-fill  "></i>
                     </a>
                 </div>
             </div>
