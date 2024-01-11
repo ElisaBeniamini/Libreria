@@ -16,7 +16,7 @@
 
                 <!--button riepilogo -->
                 <div class="d-flex justify-content-center mt-3 div-button-30-media">
-                    <a class=" button-30 mx-1 div-button-30-media " href="{{ route('books.index') }}">La tua Libreria
+                    <a class=" button-30 mx-1 div-button-30-media " href="{{ route('books.index') }}">Libreria
                         <br>
                     </a>
                     <a class="button-30 div-button-30-media " href="{{ route('books.create') }}">Aggiungi Libro

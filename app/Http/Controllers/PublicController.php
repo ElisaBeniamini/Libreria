@@ -12,7 +12,9 @@ class PublicController extends Controller
 {
     public function homepage()
     {
-        return view('homepage');
+        $book = Book::all();
+        $latestBooks = Book::latest()->take(4)->get();
+        return view('homepage', compact('book', 'latestBooks'));
     }
 
 

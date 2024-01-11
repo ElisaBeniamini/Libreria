@@ -39,13 +39,20 @@
                                 </div>
                             </div>
                             <div class="book-card__info text-center">
-                                <div class="book-card__title">
-                                    <h5 class="text-capitalize">{{ $item['name'] }}</h5>
+                                <div class="book-card__title  ">
+                                    <h5 class="text-capitalize mb-0">{{ $item['name'] }}</h5>
                                 </div>
                                 <div class="book-card__author">
                                     {{ $item->author->firstname . ' ' . $item->author->lastname }}
                                 </div>
-
+                                @auth
+                                    <div class="book-card__author ">
+                                        Libreria di
+                                        <span class="text-capitalize fw-normal">
+                                            {{ Auth::user()->name }}
+                                        </span>
+                                    </div>
+                                @endauth
                                 <a href="{{ route('books.show', ['book' => $item->uri]) }}"
                                     class=" mt-2 button-show-scopri-di-piu">
                                     <span class="text">Scopri di più</span>

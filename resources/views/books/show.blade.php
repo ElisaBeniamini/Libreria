@@ -33,8 +33,6 @@
 
 
     <div class="container mt-5 " style="margin-bottom: 500px">
-
-
         <div class="row  d-flex justify-content-center">
             <!--immagine dettaglio libro-->
             <div class="col-12 col-md-6 ">

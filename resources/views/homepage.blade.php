@@ -60,16 +60,51 @@
 
     @guest
         <div class="container mt-5 ">
-            <div class="row  p-3 d-flex justify-content-center   rounded-pill "
-                style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
-                <div class=" col-12 col-md-6 text-center ">
-                    <h2>Incrementa la tua libreria personale e condividi le tue avventure letterarie con altri appassionati
+            <div class="row  p-3 d-flex justify-content-center   rounded-pill ">
+                <div class=" col-12 col-md-7 text-start ">
+                    <h3>Esplora e condividi le tue avventure letterarie su una libreria online dedicata agli appassionati
                         della lettura!
-                    </h2>
+                    </h3>
 
                 </div>
             </div>
+
         </div>
+    @endguest
+    <div class="container mt-5" style="margin-bottom: 150px">
+        <div class="row d-flex justify-content-center"
+            style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+            @foreach ($latestBooks as $item)
+                <div class="col-12 col-md-3 text-start  book-card" id="bookCard">
+                    <div class="book-card__cover">
+                        <div class="book-card__book">
+                            <div class="book-card__book-front">
+                                <img class="book-card__img border border-secondary"
+                                    src="{{ empty($item->image) ? '/immagini/default.jpg' : Storage::url($item->image) }}"
+                                    alt="Book Cover">
+                            </div>
+                            <div class="book-card__book-back"></div>
+                            <div class="book-card__book-side"></div>
+                        </div>
+                    </div>
+                    <div class="book-card__info text-center">
+                        <div class="book-card__title">
+                            <h5 class="text-capitalize">{{ $item['name'] }}</h5>
+                        </div>
+                        <div class="book-card__author">
+                            {{ $item->author->firstname . ' ' . $item->author->lastname }}
+                        </div>
+                        <a href="{{ route('books.show', ['book' => $item->uri]) }}"
+                            class=" mt-2 button-show-scopri-di-piu">
+                            <span class="text">Scopri di più</span>
+
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @guest
         <!-- Griglia collegamenti ai vari index -->
         <div class="container "style="margin-bottom: 200px">
             <!-- Visita librerie-->
@@ -126,24 +161,7 @@
 
 
 
-    {{-- @guest
-            <div class="row justify-content-center ">
-                <div class="col-12 col-md-12 text-center d-flex justify-content-center align-items-center"
-                    style="margin-top: 180px;  margin-left: 50px;">
-                    <h1 style="color: rgb(51, 49, 49);font-size: 110px;"> Crea la tua libreria online!</h1>
-                    <div>
-                        <a href="{{ route('books.index') }}" class="text-decoration-none btn btn-outline-warning  fw-bolder "
-                            style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:30px;color: rgb(51, 49, 49);margin-top: 100px;  ">Anteprima
-                            Libreria
-                        </a>
-                        <a href="{{ route('authors.index') }}"class="text-decoration-none btn btn-outline-warning fw-bolder "
-                            style="box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;font-size:30px;color: rgb(51, 49, 49);margin-top: 30px;  ">Anteprima
-                            Autori
-                        </a>
-                    </div>
-                </div>
-            </div>
-        @endguest --}}
+
 
 
 
