@@ -14,11 +14,11 @@
 </head>
 
 <body>
-    @if (session('success'))
+    {{-- @if (session('success'))
         <div class="alert alert-success mb-0" style="border: 2px solid green" role="alert">
             Caricamento completato
         </div>
-    @endif
+    @endif --}}
     {{ $slot }}
 </body>
 
