@@ -4,9 +4,6 @@
     </x-slot>
     <x-navbar />
 
-
-
-
     <div class="container text-center " style="margin-top:200px ; ">
         <h1 style="font-family: monospace">Effettua il Login</h1>
 

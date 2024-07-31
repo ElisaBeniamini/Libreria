@@ -4,10 +4,6 @@
     </x-slot>
     <x-navbar />
 
-
-
-
-
     <div class="container   ">
 
         <h1 class="text-center" style="font-family: monospace">Registrati subito! <br> <br> Crea la tua libreria
