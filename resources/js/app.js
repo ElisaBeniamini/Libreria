@@ -1,48 +1,39 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
 import './bootstrap';
-import 'bootstrap';
+import { createApp } from 'vue';
 
+/**
+ * Next, we will create a fresh Vue application instance. You may then begin
+ * registering components with the application instance so they are ready
+ * to use in your application's views. An example is included for you.
+ */
 
-//const element = document.getElementById('nome');
-//const element_2 = document.getElementById('email');
-//const element_3 = document.getElementById('registratoIl');
+const app = createApp({});
 
-// Applica l'effetto solo se l'elemento è presente
-//if (element) {
-//    new CircleType(element).radius(800);
-//}
-//if (element_2) {
-//    new CircleType(element_2).radius(800);
-//}
-//if (element_3) {
-//    new CircleType(element_3).radius(800);
-//}
+import ExampleComponent from './components/ExampleComponent.vue';
+app.component('example-component', ExampleComponent);
 
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
-var acc = document.getElementsByClassName("accordion");
-var i;
+// Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
+//     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
+// });
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-        /* Toggle between adding and removing the "active" class,
-        to highlight the button that controls the panel */
-        this.classList.toggle("active");
+/**
+ * Finally, we will attach the application instance to a HTML element with
+ * an "id" attribute of "app". This element is included with the "auth"
+ * scaffolding. Otherwise, you will need to add an element yourself.
+ */
 
-        /* Toggle between hiding and showing the active panel */
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
-}
-
-
-
-
-
-
-
-
-
-
+app.mount('#app');
