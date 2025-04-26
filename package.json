@@ -8,7 +8,7 @@
     "devDependencies": {
         "axios": "^1.7.4",
         "laravel-vite-plugin": "^0.8.0",
-        "vite": "^4.0.0"
+        "vite": "4.5.13"
     },
     "dependencies": {
         "animate.css": "^4.1.1",
