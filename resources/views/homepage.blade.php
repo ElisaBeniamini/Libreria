@@ -4,8 +4,7 @@
     </x-slot>
     <!-- Navigation-->
     <x-navbar />
-
-    <!-- Testo di Invito header-->
+    <!-- Autenticato-->
     @auth
         <div class="container">
             <div class="row d-flex  text-center align-self-center row-authHomepage-media">
@@ -44,27 +43,23 @@
                     <!--button add category-->
                     <a class="button-30 button-30-aggiungi-media text-center" href="{{ route('categories.create') }}">
                         <i class="bi bi-plus fs-3 text-dark"></i>
-                        Aggiungi <br>
-                        Categoria
-                    </a>
+                        Aggiungi<br>Categoria</a>
                     <!-- go category -->
                     <a href="{{ route('categories.index') }}"class=" text-decoration-none fw-bolder text-muted "
                         style="font-size: 50px">
                         Categorie
-                        <i class="bi bi-arrow-right-circle-fill  "></i>
+                        <i class="bi bi-arrow-right-circle-fill"></i>
                     </a>
                 </div>
             </div>
         </div>
     @endauth
-
+    <!-- Guest-->
     @guest
         <div class="container mt-5 ">
             <div class="row  p-3 d-flex justify-content-center   rounded-pill ">
-                <div class=" col-12 col-md-7 text-start ">
-                    <h3>Esplora e condividi le tue avventure letterarie su una libreria online dedicata agli appassionati
-                        della lettura!
-                    </h3>
+                <div class=" col-12 col-md-12 text-start ">
+                    <h1>Esplora e condividi le tue avventure letterarie su una libreria online</h1>
 
                 </div>
             </div>
@@ -155,37 +150,6 @@
             </div>
         </div>
     @endguest
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <x-footer />
 </x-layout>
